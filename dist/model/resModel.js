@@ -5,13 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SuccessModel = exports.ErrorModel = void 0;
 class BaseModel {
+  message = "";
+  errno = -1;
   constructor(data, message) {
-    // data是对象，message是字符串，并兼容不传data的情况
-    if (typeof data === "string") {
-      this.message = data;
-      data = null;
-      message = null;
-    }
     if (data) {
       this.data = data;
     }

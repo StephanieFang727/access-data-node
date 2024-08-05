@@ -6,8 +6,7 @@ module.exports = {
         process.env.NODE_ENV === "development"
           ? "src/index.ts"
           : "dist/index.js",
-      interpreter:
-        process.env.NODE_ENV === "development" ? "ts-node-esm" : "node",
+      interpreter: process.env.NODE_ENV === "development" ? "npx tsx" : "node",
       watch: process.env.NODE_ENV === "development",
       env: {
         NODE_ENV: "development",
