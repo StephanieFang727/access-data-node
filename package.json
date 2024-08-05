@@ -2,11 +2,13 @@
   "name": "access-data-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir dist --extensions \".ts,.js\"",
+    "start:dev": "ts-node-esm src/index.ts",
+    "start:prod": "node dist/index.js",
+    "pm2:dev": "pm2 start ecosystem.config.cjs --env development",
+    "pm2:prod": "npm run build && pm2 start ecosystem.config.cjs --env production"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +21,16 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-typescript": "^7.24.7",
     "@types/koa": "^2.15.0",
     "@types/koa-router": "^7.4.8",
     "@types/koa-static": "^4.0.4",
     "@types/node": "^22.1.0",
+    "pm2": "^5.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }

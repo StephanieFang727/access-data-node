@@ -1,15 +1,17 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SuccessModel = exports.ErrorModel = void 0;
 class BaseModel {
-  data: any;
-  message!: string;
-  errno!: number;
-  constructor(data: string | object | null, message: string | null) {
+  constructor(data, message) {
     // data是对象，message是字符串，并兼容不传data的情况
     if (typeof data === "string") {
       this.message = data;
       data = null;
       message = null;
     }
-
     if (data) {
       this.data = data;
     }
@@ -18,19 +20,17 @@ class BaseModel {
     }
   }
 }
-
 class SuccessModel extends BaseModel {
-  constructor(data: string | object | null, message: string | null) {
+  constructor(data, message) {
     super(data, message);
     this.errno = 0;
   }
 }
-
+exports.SuccessModel = SuccessModel;
 class ErrorModel extends BaseModel {
-  constructor(data: string | object | null, message: string | null) {
+  constructor(data, message) {
     super(data, message);
     this.errno = -1;
   }
 }
-
-export { SuccessModel, ErrorModel };
+exports.ErrorModel = ErrorModel;
