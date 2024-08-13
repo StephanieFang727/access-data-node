@@ -6,6 +6,7 @@ import config from "./config/index";
 import index from "./router/index";
 import upload from "./router/upload";
 import user from "./router/user";
+import chatbot from "./router/chatbot";
 import serve from "koa-static";
 import path from "path";
 
@@ -33,6 +34,9 @@ app.use(upload.allowedMethods());
 
 app.use(user.routes());
 app.use(user.allowedMethods());
+
+app.use(chatbot.routes());
+app.use(chatbot.allowedMethods());
 
 app.use(serve(path.join(__dirname, "../uploads")));
 
