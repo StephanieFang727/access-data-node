@@ -6,4 +6,7 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-export { uploadDir };
+const DBMAP: Record<string, string> = {
+  datasetId_tgrchmay5kh: "test_user_app_01",
+};
+export { uploadDir, DBMAP };
