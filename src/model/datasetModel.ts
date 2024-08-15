@@ -16,7 +16,7 @@ enum FieldType {
 
 interface Field {
   id: string;
-  fieldName: string;
+  name: string;
   fieldType: FieldType;
   expression: string;
   category: FieldCategory;
@@ -31,7 +31,7 @@ export interface DataSet extends Document {
 
 const fieldSchema = new Schema<Field>({
   id: { type: String, required: true },
-  fieldName: { type: String, required: true },
+  name: { type: String, required: true },
   fieldType: { type: String, enum: Object.values(FieldType), required: true },
   expression: { type: String, required: true },
   category: {

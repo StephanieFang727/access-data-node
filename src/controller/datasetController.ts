@@ -9,24 +9,31 @@ export const insertData = async () => {
     fields: [
       {
         id: "2jdudh",
-        fieldName: "点击率",
+        name: "点击率",
         fieldType: "STRING",
         expression: "click_rate",
         category: "MEASURE",
       },
       {
         id: "swmz26",
-        fieldName: "渠道",
+        name: "渠道",
         fieldType: "STRING",
         expression: "channel",
         category: "DIMENSION",
       },
       {
         id: "zbld2c",
-        fieldName: "日期",
-        fieldType: "STRING",
+        name: "日期",
+        fieldType: "DATE",
         expression: "date",
         category: "DIMENSION",
+      },
+      {
+        id: "bow3yn",
+        name: "看播率",
+        fieldType: "STRING",
+        expression: "watch_rate",
+        category: "MEASURE",
       },
     ],
   };
@@ -43,6 +50,12 @@ export const findByDatasetId = async (datasetId: string) => {
 
 export const findById = async (fieldId: string) => {
   const result = await DataSetModel.findOne({ "fields.id": fieldId });
+  console.log(result);
+  return result;
+};
+
+export const deleteByDatasetId = async (datasetId: string) => {
+  const result = await DataSetModel.deleteOne({ datasetId });
   console.log(result);
   return result;
 };

@@ -38,16 +38,15 @@ export class DataQueryRepository {
     const transform = (arr: string[]) => {
       return arr.map((item: string) => `ROUND(SUM(${item}),2) AS ${item}`);
     };
-    console.log(
-      `SELECT ${select_d.join(", ")},  ${transform(select_m).join(", ")} 
-      FROM ${database} 
-      GROUP BY ${select_d.join(", ")}`
-    );
-    const [rows] = await pool.query(
-      `SELECT ${select_d.join(", ")},  ${transform(select_m).join(", ")} 
-        FROM ${database} 
-        GROUP BY ${select_d.join(", ")}`
-    );
+    console.log(select_d, select_m);
+    const selectedFields = select_d.concat(transform(select_m));
+    let query = `SELECT ${selectedFields.join(", ")}
+      FROM ${database} `;
+    if (select_d.length) {
+      query += `GROUP BY ${select_d.join(", ")}`;
+    }
+    console.log(query);
+    const [rows] = await pool.query(query);
     return rows;
   }
 }
