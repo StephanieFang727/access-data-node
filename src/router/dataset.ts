@@ -3,6 +3,7 @@ import {
   insertData,
   findByDatasetId,
   deleteByDatasetId,
+  findDatasets,
 } from "../controller/datasetController";
 
 const router = new Router();
@@ -15,9 +16,15 @@ router.get("/dataset", async (ctx) => {
     ctx.body = res;
   }
 });
+
+router.get("/datasetList", async (ctx) => {
+  const res = await findDatasets();
+  ctx.body = res;
+});
+
 router.post("/dataset", async (ctx) => {
   const data = ctx.request.body;
-  const resData = await insertData();
+  const resData = await insertData(data);
   ctx.body = resData;
 });
 

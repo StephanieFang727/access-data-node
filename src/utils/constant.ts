@@ -7,6 +7,7 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 const DBMAP: Record<string, string> = {
-  datasetId_tgrchmay5kh: "test_user_app_01",
+  datasetId_X8dsi13jDqaO: "test_user_app_01",
+  datasetId_I0BypRSVX7us: "test_resource_app_01",
 };
 export { uploadDir, DBMAP };
