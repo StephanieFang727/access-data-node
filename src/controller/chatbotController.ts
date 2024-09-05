@@ -12,8 +12,11 @@ const TypeEnum = z.enum([
   "@fangjiefe/bar-chart",
 ]);
 
-const DatasetNameEnum = z.enum(["用户行为数据表", "资源成本表"]);
-const DataSetIdEnum = z.enum(["datasetId_X8dsi13jDqaO", "datasetId_xxxxx"]);
+const DatasetNameEnum = z.enum(["用户行为数据表", "资源成本收益表"]);
+const DataSetIdEnum = z.enum([
+  "datasetId_X8dsi13jDqaO",
+  "datasetId_I0BypRSVX7us",
+]);
 
 const attributesSchema = z.object({
   title: z.string().optional().describe("图表标题"),
