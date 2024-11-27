@@ -22,12 +22,11 @@ const attributesSchema = z.object({
   title: z.string().optional().describe("图表标题"),
   xAxisTitle: z.string().optional().default("").describe("图表x轴标题"),
   yAxisTitle: z.string().optional().default("").describe("图表y轴标题"),
-  useLegend: z.boolean().optional().default(true).describe("是否使用图例"),
-  useTooltip: z.boolean().optional().default(true).describe("是否使用提示"),
 });
 
 const stylesSchema = z.object({
-  titleFontSize: z.number().optional().default(16).describe("标题字体大小"),
+  useLegend: z.boolean().optional().default(true).describe("是否使用图例"),
+  useTooltip: z.boolean().optional().default(true).describe("是否使用提示"),
 });
 
 const datasetSchema = z.object({

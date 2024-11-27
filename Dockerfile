@@ -10,7 +10,7 @@ COPY package*.json ./
 # 安装依赖
 RUN npm install
 
-RUN npm build
+RUN npm run build
 # 复制项目源代码
 COPY . .
 
