@@ -10,12 +10,12 @@ COPY package*.json ./
 # 安装依赖
 RUN npm install
 
-RUN npm run build
 # 复制项目源代码
 COPY . .
 
-# 安装 PM2
-RUN npm install pm2 -g
+# 运行构建
+RUN npm run build
+
 
 # 启动 PM2 运行应用
-CMD ["pm2-runtime", "ecosystem.config.cjs", "--env", "production"]
+CMD ["npx","pm2-runtime", "ecosystem.config.cjs", "--env", "production"]
